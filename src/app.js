@@ -47,6 +47,6 @@ class App {
   }
 }
 
-export default  (...rest) => {
+export default (...rest) => {
   return new App(...rest)
 }

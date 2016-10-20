@@ -41,11 +41,12 @@ export function clone(obj) {
 
 export function upperCaseHead(head) {
   head = String(head).toLowerCase()
-  if(head === 'dnt') {
-    return 'DNT'
+
+  const special = {
+    'dnt' : 'DNT'
   }
 
-  let arr = head.split('-')
-  arr = arr.map(item => item.replace(/^./, $0 => $0.toUpperCase()))
-  return arr.join('-')
+  if(special[head]) return special[head]
+
+  return head.split('-').map(item => item.replace(/^./, $0 => $0.toUpperCase())).join('-')
 }
