@@ -1,4 +1,6 @@
 import os from 'os'
+import StcLog from 'stc-log'
+const logger = new StcLog()
 
 export function sleep(s) {
   return new Promise(resolve => {
@@ -22,3 +24,28 @@ export function isSudo() {
   return !isWindows && process.env.USER === 'root'
 }
 
+export function clone(obj) {
+  let ret = {}
+  try {
+    if (typeof obj !== 'object') {
+      throw new Error(obj + 'is not obj')
+    }
+
+    ret = JSON.parse(JSON.stringify(obj))
+  } catch (e) {
+    logger.error('clone fail: ' + obj)
+  }
+
+  return ret
+}
+
+export function upperCaseHead(head) {
+  head = String(head).toLowerCase()
+  if(head === 'dnt') {
+    return 'DNT'
+  }
+
+  let arr = head.split('-')
+  arr = arr.map(item => item.replace(/^./, $0 => $0.toUpperCase()))
+  return arr.join('-')
+}
