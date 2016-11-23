@@ -43,10 +43,10 @@ export function upperCaseHead(head) {
   head = String(head).toLowerCase()
 
   const special = {
-    'dnt' : 'DNT'
+    'dnt': 'DNT'
   }
 
-  if(special[head]) return special[head]
+  if (special[head]) return special[head]
 
   return head.split('-').map(item => item.replace(/^./, $0 => $0.toUpperCase())).join('-')
 }
