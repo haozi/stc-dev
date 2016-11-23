@@ -32,13 +32,14 @@
     "parallelshell": "^2.0.0"
   },
   "scripts": {
-    "start": "npm run su; npm run compile; parallelshell 'npm run watch' 'npm run debug'",
+    "start": "npm run dev",
+    "dev": "npm run su; npm run build; parallelshell 'npm run watch' 'npm run debug'",
     "test": "ava test/",
     "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -t 50000 --recursive  -R spec test/",
-    "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir lib/ --source-maps inline",
-    "watch-compile": "npm run compile -- --watch",
-    "watch": "npm run watch-compile",
-    "prepublish": "npm run compile",
+    "build": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir lib/ --source-maps inline",
+    "watch-build": "npm run build -- --watch",
+    "watch": "npm run watch-build",
+    "prepublish": "npm run build",
     "eslint": "eslint src/",
     "debug": "sudo devtool lib/index --watch > /dev/null 2&>1",
     "su": "sudo whoami"
