@@ -32,7 +32,7 @@
     "parallelshell": "^2.0.0"
   },
   "scripts": {
-    "start": "npm run compile; parallelshell 'npm run watch' 'npm run debug'",
+    "start": "npm run su; npm run compile; parallelshell 'npm run watch' 'npm run debug'",
     "test": "ava test/",
     "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -t 50000 --recursive  -R spec test/",
     "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir lib/ --source-maps inline",
@@ -40,7 +40,8 @@
     "watch": "npm run watch-compile",
     "prepublish": "npm run compile",
     "eslint": "eslint src/",
-    "debug": "sudo devtool lib/index --watch > /dev/null 2&>1"
+    "debug": "sudo devtool lib/index --watch > /dev/null 2&>1",
+    "su": "sudo whoami"
   },
   "author": "",
   "license": "MIT"
