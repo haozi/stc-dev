@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "npm run su; npm run build; parallelshell 'npm run watch' 'npm run debug'",
+    "dev": "npm run su; npm run build /dev/null 2&>1; parallelshell 'npm run watch' 'npm run debug'",
     "test": "ava test/",
     "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -t 50000 --recursive  -R spec test/",
     "build": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir lib/ --source-maps inline",
