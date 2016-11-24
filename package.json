@@ -42,7 +42,7 @@
     "prepublish": "npm run build",
     "eslint": "eslint src/",
     "debug": "sudo devtool lib/index --watch > /dev/null 2&>1",
-    "su": "sudo whoami"
+    "su": "sudo echo 'get root permission!'"
   },
   "author": "",
   "license": "MIT"
